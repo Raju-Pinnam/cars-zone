@@ -35,8 +35,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
 
     'pages.apps.PagesConfig',
+    'teams.apps.TeamsConfig',
 ]
 
 MIDDLEWARE = [
@@ -73,9 +75,16 @@ WSGI_APPLICATION = 'abc_car.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'cars.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'cars.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'carszone_db',
+        'USER': 'postgres',
+        'PASSWORD': 'Rajkumar35*',
+        'HOST': 'localhost',
     }
 }
 
