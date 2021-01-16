@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.db import models
 from django.db.models.signals import pre_save
+from django.urls import reverse
 
 from ckeditor.fields import RichTextField
 from multiselectfield import MultiSelectField
@@ -46,6 +47,9 @@ class Car(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('cars:detail', args=[self.slug])
 
 
 def post_save_slug_func(sender, instance, *args, **kwargs):

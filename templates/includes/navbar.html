@@ -30,32 +30,32 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a  {% if cars == request.path %}
-                                    class="nav-link active"
-                                {% else %}
-                                    class="nav-link"
-                                {% endif %}
-                                    href="{{ cars }}">
+                        <a  {% if cars == request.path or 'cars' in request.path %}
+                            class="nav-link active"
+                        {% else %}
+                            class="nav-link"
+                        {% endif %}
+                            href="{{ cars }}">
                             Cars
                         </a>
                     </li>
                     <li class="nav-item">
                         <a  {% if about == request.path %}
-                                    class="nav-link active"
-                                {% else %}
-                                    class="nav-link"
-                                {% endif %}
-                                    href="{{ about }}">
+                            class="nav-link active"
+                        {% else %}
+                            class="nav-link"
+                        {% endif %}
+                            href="{{ about }}">
                             About
                         </a>
                     </li>
                     <li class="nav-item">
                         <a  {% if service == request.path %}
-                                    class="nav-link active"
-                                {% else %}
-                                    class="nav-link"
-                                {% endif %}
-                                    href="{{ service }}">
+                            class="nav-link active"
+                        {% else %}
+                            class="nav-link"
+                        {% endif %}
+                            href="{{ service }}">
                             Services
                         </a>
                     </li>
@@ -63,11 +63,11 @@
 
                     <li class="nav-item dropdown">
                         <a  {% if contact == request.path %}
-                                    class="nav-link active"
-                                {% else %}
-                                    class="nav-link"
-                                {% endif %}
-                                    href="{{ contact }}">
+                            class="nav-link active"
+                        {% else %}
+                            class="nav-link"
+                        {% endif %}
+                            href="{{ contact }}">
                             Contact</a>
                     </li>
                     <li class="nav-item dropdown m-hide">
