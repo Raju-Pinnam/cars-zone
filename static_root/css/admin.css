@@ -12,8 +12,14 @@ body{
     font-weight: bold;
 }
 
-div.breadcrumbs{
-    background: #2f2f2f;
+div.breadcrumbs, .module h2{
+    background-color: #2f2f2f;
+}
+.module h2, .module caption, .inline-group h2{
+    background-color: #1b1e21;
+}
+.module ul.actionlist{
+    background-color: greenyellow;
 }
 
 #changelist-filter h2{

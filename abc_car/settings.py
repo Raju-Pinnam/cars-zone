@@ -26,6 +26,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'accounts:dashboard'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,9 +41,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     'django.contrib.humanize',
+    'django.contrib.sites',
     # third party apps
     'ckeditor',
     'multiselectfield',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
     # local apps
     'pages.apps.PagesConfig',
     'teams.apps.TeamsConfig',
@@ -136,9 +144,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
 
-
 # message
 from django.contrib.messages import constants as messages
+
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+SITE_ID = 1
