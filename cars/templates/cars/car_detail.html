@@ -16,7 +16,7 @@
         </div>
     </div>
     <!-- Sub Banner end -->
-
+    {% include 'includes/messages.html' %}
     <!-- Car details page start -->
     <div class="car-details-page content-area-6">
         <div class="container">
@@ -138,7 +138,7 @@
                                                 <ul>
                                                     {% for feature in car.features %}
                                                         <li>
-                                                            {{ feature}}
+                                                            {{ feature }}
                                                         </li>
                                                     {% endfor %}
                                                 </ul>
@@ -214,28 +214,36 @@
                                 <div class="modal-content">
                                     <div class="contact-dealer modal-header">
                                         <!-- <h5 class="modal-title" id="inquiryModalLabel">Contact Dealer</h5> -->
-                                        <img src="{% static 'img/logos/logo-black-white.png' %}">
+                                        <img src="{% static 'img/logos/logo-black-white.png' %}" alt="Logo">
                                         <button type="button" class="close" data-dismiss="modal">
                                             <span>&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="#">
+                                        <form action="{% url 'contacts:inquiry' %}" method="post">
+                                            {% csrf_token %}
+                                            {% if request.user.is_authenticated %}
+                                                <input type="hidden" name="user_id" value="{{ request.user.id }}">
+                                            {% else %}
+                                                <input type="hidden" name="user_id" value="0">
+                                            {% endif %}
+                                            <input type="hidden" name="car_id" value="{{ car.id }}">
                                             <div class="form-group">
                                                 <label for="name" class="col-form-label">Hello, My Name is</label>
                                                 <div class="row">
                                                     <div class="col">
                                                         <input type="text" name="first_name" class="form-control"
-                                                               placeholder="First Name" required>
+                                                               placeholder="First Name" required aria-label>
                                                     </div>
                                                     <div class="col">
                                                         <input type="text" name="last_name" class="form-control"
-                                                               placeholder="Last Name" required>
+                                                               placeholder="Last Name" required aria-label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <select class="form-control" id="sel1" name="customer_need">
+                                                <select class="form-control" id="sel1" name="customer_need"
+                                                        aria-label>
                                                     <option value="I'm interested in this">I'm interested in this
                                                     </option>
                                                     <option value="I'd like to know your best price for this">I'd like
@@ -252,7 +260,7 @@
 
                                             <div class="form-group">
                                                 <input type="text" name="car_title" class="form-control"
-                                                       value="LAMBORGHINI HURACÁN." readonly>
+                                                       value="{{ car.title }}" readonly aria-label="">
                                             </div>
 
                                             <div class="form-group">
@@ -260,11 +268,11 @@
                                                 <div class="row">
                                                     <div class="col">
                                                         <input type="text" name="city" class="form-control"
-                                                               placeholder="City" required>
+                                                               placeholder="City" required aria-label="">
                                                     </div>
                                                     <div class="col">
                                                         <input type="text" name="state" class="form-control"
-                                                               placeholder="State" required>
+                                                               placeholder="State" required aria-label="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -275,21 +283,24 @@
                                                         <label for="name" class="col-form-label">You can reach me by
                                                             email at</label>
                                                         <input type="email" name="email" class="form-control"
-                                                               placeholder="Email Address" required>
+                                                               placeholder="Email Address" required aria-label="">
                                                     </div>
                                                     <div class="col">
                                                         <label for="phone" class="col-form-label">or by phone at</label>
                                                         <input type="text" name="phone"
                                                                placeholder="Phone Number (optional)"
-                                                               class="form-control">
+                                                               class="form-control" aria-label="">
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="message" class="col-form-label">Add comments</label>
-                                                <textarea name="message" class="form-control"
-                                                          placeholder="Enter your message here (optional)"></textarea>
+                                                <textarea name="message"
+                                                          class="form-control"
+                                                          aria-label=""
+                                                          placeholder="Enter your message here (optional)">
+                                                </textarea>
                                             </div>
                                             <hr>
                                             <input type="submit" value="Send" class="btn btn-block btn-danger">

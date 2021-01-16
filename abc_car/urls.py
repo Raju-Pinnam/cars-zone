@@ -8,7 +8,8 @@ urlpatterns = [
     path('', include('pages.urls', namespace='pages')),
     path('cars/', include('cars.urls', namespace='cars')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
-    path('socialaccounts/', include('allauth.urls'))
+    path('socialaccounts/', include('allauth.urls')),
+    path('contacts/', include('contacts.urls', namespace='contacts')),
 ]
 
 if django_settings.DEBUG:
