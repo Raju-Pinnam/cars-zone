@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls', namespace='pages')),
     path('cars/', include('cars.urls', namespace='cars')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
 ]
 
 if django_settings.DEBUG:
